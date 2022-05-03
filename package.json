@@ -8,12 +8,12 @@
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
-    "lint": "eslint",
-    "lint:fix": "eslint --fix",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "lint:staged": "lint-staged",
     "prepare": "husky install",
-    "prettier": "prettier",
-    "prettier:write": "prettier --write",
+    "prettier": "prettier .",
+    "prettier:write": "prettier . --write",
     "preview": "nuxt preview"
   },
   "devDependencies": {
@@ -34,10 +34,10 @@
   },
   "lint-staged": {
     "*.{js,ts,vue}": [
-      "eslint --quiet --fix"
+      "eslint . --quiet --fix"
     ],
     "*.{json,md,html,js,ts,vue}": [
-      "prettier --write"
+      "prettier . --write"
     ]
   }
 }

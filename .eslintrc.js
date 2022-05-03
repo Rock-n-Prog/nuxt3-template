@@ -6,10 +6,11 @@ module.exports = {
   extends: [
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
-    'plugin:vue/vue3-recommended',
+    // TODO(#1): Find a way to install this plugin
+    // 'plugin:vue/vue3-essential',
     '@vue/typescript/recommended',
     '@vue/prettier',
-    '@vue/prettier/@typescript-eslint',
+    '@vue/eslint-config-typescript',
   ],
   parserOptions: {
     parser: '@typescript-eslint/parser',

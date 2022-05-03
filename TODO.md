@@ -4,7 +4,8 @@ Not writing issues at the moment, obviously still pretty in a WIP-state.
 
 Bugfix
 
-- Repair pre-commit hook (this shit: `Error [ERR_PACKAGE_PATH_NOT_EXPORTED]: Failed to load plugin 'vue' declared in '.eslintrc.js': Package subpath './lib/rules/array-bracket-spacing' is not defined by "exports" in /home/hackerman/Dev/nuxt3-template/node_modules/eslint/package.json`)
+- (#1) Repair pre-commit hook (this shit:
+  `Error [ERR_PACKAGE_PATH_NOT_EXPORTED]: Failed to load plugin 'vue' declared in '.eslintrc.js': Package subpath './lib/rules/array-bracket-spacing' is not defined by "exports" in /home/hackerman/Dev/nuxt3-template/node_modules/eslint/package.json`)
 
 Features
 
