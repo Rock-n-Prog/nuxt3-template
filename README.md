@@ -35,4 +35,13 @@ Locally preview production build:
 yarn preview
 ```
 
-###
+### Lint app
+
+```bash
+yarn lint
+yarn lint:fix # Fix code style using eslint
+yarn lint:staged # Run code style fix on staged files
+
+yarn prettier
+yarn prettier:fix # Fix code style using prettier
+```
