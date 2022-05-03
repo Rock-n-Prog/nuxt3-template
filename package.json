@@ -8,8 +8,13 @@
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
-    "preview": "nuxt preview",
-    "lint": "lint"
+    "lint": "lint",
+    "lint:fix": "lint --fix",
+    "lint:staged": "lint-staged",
+    "prepare": "husky install",
+    "prettier": "prettier",
+    "prettier:fix": "prettier --fix",
+    "preview": "nuxt preview"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.22.0",
@@ -17,7 +22,7 @@
     "eslint": "^8.14.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-vue": "^8.7.1",
-    "husky": "^7.0.4",
+    "husky": "^7.0.0",
     "lint-staged": "^12.4.1",
     "nuxt": "3.0.0-rc.1",
     "prettier": "^2.6.2",
