@@ -1,42 +1,38 @@
-# Nuxt 3 Minimal Starter
+# Nuxt 3 Template
 
-Look at the [nuxt 3 documentation](https://v3.nuxtjs.org) to learn more.
+Simple [Nuxt 3](https://v3.nuxtjs.org/) Template that uses
+[an open GraphQL API about planets](https://github.com/ZaneTurner/PlanetsAPI).
+
+Made with love by [Fabien Roy](https://github.com/ExiledNarwal28).
 
 ## Setup
 
 Make sure to install the dependencies:
 
 ```bash
-# yarn
 yarn install
-
-# npm
-npm install
-
-# pnpm
-pnpm install --shamefully-hoist
 ```
 
-## Development Server
+## Available scripts
 
-Start the development server on http://localhost:3000
+### Start development server
+
+Server starts on [http://localhost:3000](http://localhost:300)
 
 ```bash
-npm run dev
+yarn dev
 ```
 
-## Production
-
-Build the application for production:
+### Build production app
 
 ```bash
-npm run build
+yarn run build
 ```
 
 Locally preview production build:
 
 ```bash
-npm run preview
+yarn preview
 ```
 
-Checkout the [deployment documentation](https://v3.nuxtjs.org/docs/deployment) for more information.
+###
