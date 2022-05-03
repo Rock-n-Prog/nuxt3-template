@@ -1,12 +1,24 @@
 {
-  "private": true,
+  "name": "nuxtjs3-boilerplate",
+  "version": "0.0.1",
+  "description": "Nuxt.js v3 boilerplate",
+  "author": "Fabien Roy <fabienroy28@gmail.com> (https://rocknprog.com)",
+  "license": "MIT",
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
-    "preview": "nuxt preview"
+    "preview": "nuxt preview",
+    "lint": "lint"
   },
   "devDependencies": {
-    "nuxt": "3.0.0-rc.1"
+    "@typescript-eslint/eslint-plugin": "^5.22.0",
+    "@typescript-eslint/parser": "^5.22.0",
+    "eslint": "^8.14.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-vue": "^8.7.1",
+    "nuxt": "3.0.0-rc.1",
+    "prettier": "^2.6.2",
+    "typescript": "^4.6.4"
   }
 }
