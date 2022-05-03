@@ -14,6 +14,7 @@ Features
 Docs
 
 - Add golden rules
+- Add list of chosen technologies
 - Add doc for each common component
 
 DevEx
