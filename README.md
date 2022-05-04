@@ -1,7 +1,6 @@
 # Nuxt 3 Template
 
-Simple [Nuxt 3](https://v3.nuxtjs.org/) Template that uses
-[an open GraphQL API about planets](https://github.com/ZaneTurner/PlanetsAPI).
+Simple [Nuxt 3](https://v3.nuxtjs.org/) and [Apollo](https://www.apollographql.com/) Template about cars
 
 Made with love by [Fabien Roy](https://github.com/ExiledNarwal28).
 
