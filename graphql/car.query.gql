@@ -1,8 +1,8 @@
 query Car($carInput: CarInput!) {
-    car(carInput: $carInput) {
-        id
-        brand
-        model
-        year
-    }
+  car(carInput: $carInput) {
+    id
+    brand
+    model
+    year
+  }
 }
