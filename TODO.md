@@ -6,7 +6,6 @@ Bugfix
 
 - (#1) Repair pre-commit hook (this shit:
   `Error [ERR_PACKAGE_PATH_NOT_EXPORTED]: Failed to load plugin 'vue' declared in '.eslintrc.js': Package subpath './lib/rules/array-bracket-spacing' is not defined by "exports" in /home/hackerman/Dev/nuxt3-template/node_modules/eslint/package.json`)
-- Weirdly, we need to refresh /car/:id. That's problematic.
 
 Features
 
@@ -15,6 +14,7 @@ Features
 - Add mutations
 - Add i18n translations (see: https://github.com/intlify/nuxt3)
 - Add styles (style-component?)
+- Add 404 page (and general error handling)
 
 Docs
 

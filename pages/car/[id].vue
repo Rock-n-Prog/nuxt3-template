@@ -5,7 +5,7 @@ import { useCarQuery } from '~/generated/operations';
 const route = useRoute();
 const { result, loading, error } = useCarQuery({ carInput: { id: route.params.id } });
 
-const car = result?.value?.car;
+const car = computed(() => result?.value?.car);
 
 /*
 definePageMeta({
@@ -16,27 +16,27 @@ definePageMeta({
 
 <template>
   <div v-if="loading">
-    <span> Loading... </span>
+    <span>Loading...</span>
   </div>
   <div v-else-if="error">
-    <span> Error: {{ error }} </span>
+    <span>Error: {{ error }}</span>
   </div>
   <div v-else-if="car">
     <h2>Car with id {{ car.id }}</h2>
     <div>
-      <strong> Brand: </strong>
+      <strong>Brand: </strong>
       <span>
         {{ car.brand }}
       </span>
     </div>
     <div>
-      <strong> Model: </strong>
+      <strong>Model: </strong>
       <span>
         {{ car.model }}
       </span>
     </div>
     <div>
-      <strong> Year: </strong>
+      <strong>Year: </strong>
       <span>
         {{ car.year }}
       </span>
