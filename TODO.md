@@ -27,7 +27,6 @@ DevEx
 - Drop classes in `server`
   - Make sure server is a function (`makeApolloServer(...)`)
   - Drop `type-graphql`, use GQL types, inputs and enums (or find something that doesn't use classes)
-- Add CI
 - Add jest unit tests
 - Add storybook
 
