@@ -1,8 +1,12 @@
 # Nuxt 3 Template
 
-Simple [Nuxt 3](https://v3.nuxtjs.org/) and [Apollo](https://www.apollographql.com/) Template about cars
+[![Build](https://github.com/ExiledNarwal28/nuxt3-template/actions/workflows/build.yml/badge.svg)](https://github.com/ExiledNarwal28/nuxt3-template/actions/workflows/build.yml)
+
+Simple [Nuxt 3](https://v3.nuxtjs.org/) and [Apollo](https://www.apollographql.com/) Template about cars.
 
 Made with love by [Fabien Roy](https://github.com/ExiledNarwal28).
+
+Check [TODO.md](TODO.md) for what I want to do next.
 
 ## Setup
 

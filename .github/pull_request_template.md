@@ -17,7 +17,7 @@ Closes #{issue number}
 ### General PR check list
 
 - [ ] Add tests for new domain logic
-- [ ] Update documentation (README + `/docs`) (remember that changes to the file structure must be explained in `/docs`)
+- [ ] Update documentation (`README.md` + `/docs`)
 - [ ] Make sure PR author is listed in contributors
 - [ ] Keep PRs small, otherwise split into chunks
 - [ ] {add any check list item specific to your PR}
