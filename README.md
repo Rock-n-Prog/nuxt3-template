@@ -9,7 +9,7 @@ Made with love by [Fabien Roy](https://github.com/ExiledNarwal28).
 Make sure to install the dependencies:
 
 ```bash
-yarn install
+yarn
 ```
 
 ## Available scripts
