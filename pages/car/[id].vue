@@ -15,31 +15,36 @@ definePageMeta({
 </script>
 
 <template>
-  <div v-if="loading">
-    <span>Loading...</span>
-  </div>
-  <div v-else-if="error">
-    <span>Error: {{ error }}</span>
-  </div>
-  <div v-else-if="car">
-    <h2>Car with id {{ car.id }}</h2>
-    <div>
-      <strong>Brand: </strong>
-      <span>
-        {{ car.brand }}
-      </span>
+  <div>
+    <div v-if="loading">
+      <span>Loading...</span>
     </div>
-    <div>
-      <strong>Model: </strong>
-      <span>
-        {{ car.model }}
-      </span>
+    <div v-else-if="error">
+      <span>Error: {{ error }}</span>
     </div>
-    <div>
-      <strong>Year: </strong>
-      <span>
-        {{ car.year }}
-      </span>
+    <div v-else-if="car">
+      <h2>Car with id {{ car.id }}</h2>
+      <div>
+        <strong>Brand: </strong>
+        <span>
+          {{ car.brand }}
+        </span>
+      </div>
+      <div>
+        <strong>Model: </strong>
+        <span>
+          {{ car.model }}
+        </span>
+      </div>
+      <div>
+        <strong>Year: </strong>
+        <span>
+          {{ car.year }}
+        </span>
+      </div>
+      <div>
+        <NuxtLink to="/">Go back home</NuxtLink>
+      </div>
     </div>
   </div>
 </template>
