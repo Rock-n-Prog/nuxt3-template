@@ -12,26 +12,9 @@ export type Scalars = {
   Float: number;
 };
 
-export type Car = {
-  __typename?: 'Car';
-  brand: Scalars['String'];
-  id: Scalars['String'];
-  model: Scalars['String'];
-  year: Scalars['Float'];
-};
-
-export type CarInput = {
-  id: Scalars['String'];
-};
-
 export type Query = {
   __typename?: 'Query';
-  car: Car;
   recipe: Recipe;
-};
-
-export type QueryCarArgs = {
-  carInput: CarInput;
 };
 
 export type QueryRecipeArgs = {
