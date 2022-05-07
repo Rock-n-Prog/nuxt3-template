@@ -2,7 +2,7 @@
 
 [![Build](https://github.com/ExiledNarwal28/nuxt3-template/actions/workflows/build.yml/badge.svg)](https://github.com/ExiledNarwal28/nuxt3-template/actions/workflows/build.yml)
 
-Simple [Nuxt 3](https://v3.nuxtjs.org/) and [Apollo](https://www.apollographql.com/) Template about cars.
+Simple [Nuxt 3](https://v3.nuxtjs.org/) and [Apollo](https://www.apollographql.com/) Template about recipes.
 
 Made with love by [Fabien Roy](https://github.com/ExiledNarwal28).
 

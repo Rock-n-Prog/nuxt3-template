@@ -13,7 +13,7 @@ Features
 - Add more queries
 - Add mutations
 - Add i18n translations (see: https://github.com/intlify/nuxt3)
-- Add styles (style-component?)
+- Add styles (styled-components?)
 - Add 404 page (and general error handling)
 
 Docs

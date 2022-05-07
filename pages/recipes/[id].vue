@@ -9,7 +9,7 @@ const recipe = computed(() => result?.value?.recipe);
 
 /*
 definePageMeta({
-  title: car ? `Car with id ${car.id}` : '...',
+  title: recipe ? `Recipe with id ${recipe.id}` : '...',
 });
 */
 </script>
@@ -30,9 +30,9 @@ definePageMeta({
           {{ recipe.title }}
         </span>
       </div>
-      <div>
-        <NuxtLink to="/">Go back home</NuxtLink>
-      </div>
+    </div>
+    <div>
+      <NuxtLink to="/">Go back home</NuxtLink>
     </div>
   </div>
 </template>
