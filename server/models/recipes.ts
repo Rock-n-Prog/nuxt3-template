@@ -1,4 +1,4 @@
-import mongoose, { Schema } from 'mongoose';
+import { Schema, model } from 'mongoose';
 import timestamps from 'mongoose-timestamp';
 import { composeWithMongoose } from 'graphql-compose-mongoose';
 
@@ -24,7 +24,7 @@ RecipeSchema.plugin(timestamps);
 
 RecipeSchema.index({ createdAt: 1, updatedAt: 1 });
 
-const Recipe = mongoose.model('Recipe', RecipeSchema);
+const Recipe = model('Recipe', RecipeSchema);
 const RecipeTC = composeWithMongoose(Recipe);
 
 export { RecipeSchema, Recipe, RecipeTC };

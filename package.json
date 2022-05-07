@@ -6,6 +6,7 @@
   "license": "MIT",
   "scripts": {
     "build": "nuxt build",
+    "build:schema": "node scripts/build-schema.ts",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "lint": "eslint .",

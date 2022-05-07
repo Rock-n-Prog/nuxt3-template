@@ -1,3 +1,4 @@
+// TODO: This import crashes the script (maybe a TS issue)
 import fs from 'fs-extra';
 import path from 'path';
 import { graphql } from 'graphql';

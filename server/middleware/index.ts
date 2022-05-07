@@ -1,8 +1,7 @@
-import './utils/db';
 import { config } from 'dotenv';
 import express from 'express';
 import { ApolloServer } from 'apollo-server-express';
-import mongoose from 'mongoose';
+import { connection } from 'mongoose';
 import schema from '../schema';
 import { connect } from '../infra/db';
 
@@ -29,7 +28,7 @@ async function startServer() {
     cors: true,
     onHealthCheck: () =>
       new Promise((resolve, reject) => {
-        if (mongoose.connection.readyState > 0) {
+        if (connection.readyState > 0) {
           resolve(null);
         } else {
           reject();
@@ -42,3 +41,5 @@ async function startServer() {
     console.log(`😷 Health checks available at ${process.env.HEALTH_ENDPOINT}`);
   });
 }
+
+startServer();

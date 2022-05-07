@@ -1,4 +1,4 @@
-import mongoose, { Schema } from 'mongoose';
+import { Schema, model } from 'mongoose';
 import timestamps from 'mongoose-timestamp';
 import { composeWithMongoose } from 'graphql-compose-mongoose';
 
@@ -24,7 +24,7 @@ AuthorSchema.plugin(timestamps);
 
 AuthorSchema.index({ createdAt: 1, updatedAt: 1 });
 
-const Author = mongoose.model('Author', AuthorSchema);
+const Author = model('Author', AuthorSchema);
 const AuthorTC = composeWithMongoose(Author);
 
 export { AuthorSchema, Author, AuthorTC };
