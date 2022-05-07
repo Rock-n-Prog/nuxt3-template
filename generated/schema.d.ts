@@ -27,9 +27,23 @@ export type CarInput = {
 export type Query = {
   __typename?: 'Query';
   car: Car;
+  recipe: Recipe;
 };
-
 
 export type QueryCarArgs = {
   carInput: CarInput;
+};
+
+export type QueryRecipeArgs = {
+  recipeInput: RecipeInput;
+};
+
+export type Recipe = {
+  __typename?: 'Recipe';
+  id: Scalars['String'];
+  title: Scalars['String'];
+};
+
+export type RecipeInput = {
+  id: Scalars['String'];
 };

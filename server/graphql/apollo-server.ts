@@ -4,7 +4,7 @@ import type { GraphQLOptions } from 'apollo-server-core';
 import { ApolloServerBase, convertNodeHttpToRequest, runHttpQuery } from 'apollo-server-core';
 
 // TODO: Turn this into makeApolloServer()
-export class ApolloServer extends ApolloServerBase {
+class ApolloServer extends ApolloServerBase {
   async createGraphQLServerOptions(request?: IncomingMessage, reply?: ServerResponse): Promise<GraphQLOptions> {
     return this.graphQLServerOptions({ request, reply });
   }

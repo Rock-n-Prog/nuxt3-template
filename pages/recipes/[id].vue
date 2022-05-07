@@ -1,0 +1,38 @@
+<script setup lang="ts">
+// TODO: Why do I need to define this?
+import { useRecipeQuery } from '~/generated/operations';
+
+const route = useRoute();
+const { result, loading, error } = useRecipeQuery({ recipeInput: { id: route.params.id } });
+
+const recipe = computed(() => result?.value?.recipe);
+
+/*
+definePageMeta({
+  title: car ? `Car with id ${car.id}` : '...',
+});
+*/
+</script>
+
+<template>
+  <div>
+    <div v-if="loading">
+      <span>Loading...</span>
+    </div>
+    <div v-else-if="error">
+      <span>Error: {{ error }}</span>
+    </div>
+    <div v-else-if="recipe">
+      <h2>Recipe with id {{ recipe.id }}</h2>
+      <div>
+        <strong>Title: </strong>
+        <span>
+          {{ recipe.title }}
+        </span>
+      </div>
+      <div>
+        <NuxtLink to="/">Go back home</NuxtLink>
+      </div>
+    </div>
+  </div>
+</template>
