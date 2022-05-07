@@ -29,6 +29,7 @@ export type Query = {
   car: Car;
 };
 
+
 export type QueryCarArgs = {
   carInput: CarInput;
 };
