@@ -1,6 +1,5 @@
 query Recipe($recipeInput: RecipeInput!) {
   recipe(recipeInput: $recipeInput) {
-    id
     title
   }
 }

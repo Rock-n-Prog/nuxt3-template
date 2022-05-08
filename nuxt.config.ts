@@ -7,12 +7,12 @@ export default defineNuxtConfig({
   buildModules: ['@nuxt3/graphql-codegen-module', '@nuxt3/apollo-module'],
   graphqlCodegen: {
     // TODO: Move to env var
-    schema: ['http://localhost:8000/api/graphql'],
+    schema: ['http://localhost:8000'],
   },
   apollo: {
     default: {
       // TODO: Move to env var
-      uri: process.env.URL ? `${process.env.URL}/api/graphql` : 'http://localhost:8000/api/graphql',
+      uri: process.env.URL ?? 'http://localhost:8000',
     },
   },
   ignore: ['data/db'],

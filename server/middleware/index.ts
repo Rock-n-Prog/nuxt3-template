@@ -18,6 +18,7 @@ async function startServer() {
     // cors: true,
     // playground: process.env.NODE_ENV === 'development' ? true : false,
     introspection: true,
+    csrfPrevention: true,
     // tracing: true,
     // path: '/',
   });
@@ -26,6 +27,7 @@ async function startServer() {
 
   server.applyMiddleware({
     app,
+    // TODO: Maybe something like path: '/graphql'?
     path: '/',
     cors: true,
     onHealthCheck: () =>
