@@ -4,6 +4,7 @@ import { ApolloServer } from 'apollo-server-express';
 import mongoose from 'mongoose';
 import schema from '../schema';
 import { connect } from '../infra/db';
+import { ApolloServerPluginLandingPageGraphQLPlayground } from 'apollo-server-core';
 
 config();
 
@@ -21,6 +22,7 @@ async function startServer() {
     csrfPrevention: true,
     // tracing: true,
     // path: '/',
+    plugins: [ApolloServerPluginLandingPageGraphQLPlayground],
   });
 
   await server.start();

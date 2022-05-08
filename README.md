@@ -22,10 +22,8 @@ yarn
 
 Frontend starts on [http://localhost:3000](http://localhost:3000)
 
-Server starts on [http://localhost:8000](http://localhost:8000)
-
-**Currently not true, in progress** GraphQL playground is available on
-[http://localhost:8000/api/playground](http://localhost:8000/api/playground)
+Server starts on [http://localhost:8000](http://localhost:8000), which is an easy-to-use
+[GraphQL Playground](https://github.com/graphql/graphql-playground).
 
 ```bash
 yarn dev
