@@ -36,6 +36,7 @@ async function startServer() {
       }),
   });
 
+  // TODO: Add those envs (PORT and HEALTH_ENDPOINT)
   app.listen({ port: process.env.PORT }, () => {
     console.log(`🚀 Server listening on port ${process.env.PORT}`);
     console.log(`😷 Health checks available at ${process.env.HEALTH_ENDPOINT}`);
