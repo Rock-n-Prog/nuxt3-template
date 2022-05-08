@@ -3,9 +3,9 @@
 import { useRecipeQuery } from '~/generated/operations';
 
 const route = useRoute();
-const { result, loading, error } = useRecipeQuery({ recipeInput: { id: route.params.id } });
+const { result, loading, error } = useRecipeQuery({ _id: route.params.id });
 
-const recipe = computed(() => result?.value?.recipe);
+const recipe = computed(() => result?.value?.recipeById);
 
 /*
 definePageMeta({

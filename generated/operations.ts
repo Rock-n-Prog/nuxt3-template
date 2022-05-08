@@ -14,32 +14,48 @@ export type Scalars = {
   Boolean: boolean;
   Int: number;
   Float: number;
+  Date: any;
+  /** The `ID` scalar type represents a unique MongoDB identifier in collection. MongoDB by default use 12-byte ObjectId value (https://docs.mongodb.com/manual/reference/bson-types/#objectid). But MongoDB also may accepts string or integer as correct values for _id field. */
+  MongoID: any;
+};
+
+export type Author = {
+  __typename?: 'Author';
+  _id: Scalars['MongoID'];
+  createdAt?: Maybe<Scalars['Date']>;
+  firstName: Scalars['String'];
+  lastName: Scalars['String'];
+  updatedAt?: Maybe<Scalars['Date']>;
 };
 
 export type Query = {
   __typename?: 'Query';
-  recipe: Recipe;
+  authorById?: Maybe<Author>;
+  recipeById?: Maybe<Recipe>;
 };
 
-export type QueryRecipeArgs = {
-  recipeInput: RecipeInput;
+export type QueryAuthorByIdArgs = {
+  _id: Scalars['MongoID'];
+};
+
+export type QueryRecipeByIdArgs = {
+  _id: Scalars['MongoID'];
 };
 
 export type Recipe = {
   __typename?: 'Recipe';
-  id: Scalars['String'];
+  _id: Scalars['MongoID'];
+  author: Scalars['MongoID'];
+  createdAt?: Maybe<Scalars['Date']>;
   title: Scalars['String'];
-};
-
-export type RecipeInput = {
-  id: Scalars['String'];
+  updatedAt?: Maybe<Scalars['Date']>;
 };
 
 export type RecipeQueryVariables = Exact<{
-  recipeInput: RecipeInput;
+  id: Scalars['MongoID'];
 }>;
 
-export type RecipeQuery = { __typename?: 'Query'; recipe: { __typename?: 'Recipe'; id: string; title: string } };
+export type RecipeQuery = { __typename?: 'Query'; recipeById?: { __typename?: 'Recipe'; title: string } | null };
 
 export const RecipeDocument = {
   kind: 'Document',
@@ -51,8 +67,8 @@ export const RecipeDocument = {
       variableDefinitions: [
         {
           kind: 'VariableDefinition',
-          variable: { kind: 'Variable', name: { kind: 'Name', value: 'recipeInput' } },
-          type: { kind: 'NonNullType', type: { kind: 'NamedType', name: { kind: 'Name', value: 'RecipeInput' } } },
+          variable: { kind: 'Variable', name: { kind: 'Name', value: 'id' } },
+          type: { kind: 'NonNullType', type: { kind: 'NamedType', name: { kind: 'Name', value: 'MongoID' } } },
         },
       ],
       selectionSet: {
@@ -60,20 +76,17 @@ export const RecipeDocument = {
         selections: [
           {
             kind: 'Field',
-            name: { kind: 'Name', value: 'recipe' },
+            name: { kind: 'Name', value: 'recipeById' },
             arguments: [
               {
                 kind: 'Argument',
-                name: { kind: 'Name', value: 'recipeInput' },
-                value: { kind: 'Variable', name: { kind: 'Name', value: 'recipeInput' } },
+                name: { kind: 'Name', value: '_id' },
+                value: { kind: 'Variable', name: { kind: 'Name', value: 'id' } },
               },
             ],
             selectionSet: {
               kind: 'SelectionSet',
-              selections: [
-                { kind: 'Field', name: { kind: 'Name', value: 'id' } },
-                { kind: 'Field', name: { kind: 'Name', value: 'title' } },
-              ],
+              selections: [{ kind: 'Field', name: { kind: 'Name', value: 'title' } }],
             },
           },
         ],
@@ -94,7 +107,7 @@ export const RecipeDocument = {
  *
  * @example
  * const { result, loading, error } = useRecipeQuery({
- *   recipeInput: // value for 'recipeInput'
+ *   id: // value for 'id'
  * });
  */
 export function useRecipeQuery(
