@@ -28,5 +28,5 @@ module.exports = {
     // TODO: Yeah, Nuxt3 is cool, but should we really do this?
     'no-undef': 'off',
   },
-  ignorePatterns: ['generated/*'],
+  ignorePatterns: ['generated/*', 'data/db/*'],
 };

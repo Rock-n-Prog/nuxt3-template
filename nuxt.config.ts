@@ -15,4 +15,5 @@ export default defineNuxtConfig({
       uri: process.env.URL ? `${process.env.URL}/api/graphql` : 'http://localhost:3000/api/graphql',
     },
   },
+  ignore: ['data/db'],
 });
