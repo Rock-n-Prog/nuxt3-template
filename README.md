@@ -20,9 +20,12 @@ yarn
 
 ### Start development server
 
-Server starts on [http://localhost:3000](http://localhost:3000)
+Frontend starts on [http://localhost:3000](http://localhost:3000)
 
-GraphQL playground is available on [http://localhost:3000/api/playground](http://localhost:3000/api/playground)
+Server starts on [http://localhost:8000](http://localhost:8000)
+
+**Currently not true, in progress** GraphQL playground is available on
+[http://localhost:8000/api/playground](http://localhost:8000/api/playground)
 
 ```bash
 yarn dev
