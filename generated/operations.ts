@@ -55,7 +55,10 @@ export type RecipeQueryVariables = Exact<{
   id: Scalars['MongoID'];
 }>;
 
-export type RecipeQuery = { __typename?: 'Query'; recipeById?: { __typename?: 'Recipe'; title: string } | null };
+export type RecipeQuery = {
+  __typename?: 'Query';
+  recipeById?: { __typename?: 'Recipe'; _id: any; title: string } | null;
+};
 
 export const RecipeDocument = {
   kind: 'Document',
@@ -86,7 +89,10 @@ export const RecipeDocument = {
             ],
             selectionSet: {
               kind: 'SelectionSet',
-              selections: [{ kind: 'Field', name: { kind: 'Name', value: 'title' } }],
+              selections: [
+                { kind: 'Field', name: { kind: 'Name', value: '_id' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'title' } },
+              ],
             },
           },
         ],

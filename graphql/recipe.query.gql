@@ -1,5 +1,6 @@
 query Recipe($id: MongoID!) {
   recipeById(_id: $id) {
+    _id
     title
   }
 }

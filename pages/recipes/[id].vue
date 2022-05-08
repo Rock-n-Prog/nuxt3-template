@@ -9,7 +9,7 @@ const recipe = computed(() => result?.value?.recipeById);
 
 /*
 definePageMeta({
-  title: recipe ? `Recipe with id ${recipe.id}` : '...',
+  title: recipe ? `Recipe with id ${recipe._id}` : '...',
 });
 */
 </script>
@@ -23,7 +23,7 @@ definePageMeta({
       <span>Error: {{ error }}</span>
     </div>
     <div v-else-if="recipe">
-      <h2>Recipe with id {{ recipe.id }}</h2>
+      <h2>Recipe with id {{ recipe._id }}</h2>
       <div>
         <strong>Title: </strong>
         <span>
