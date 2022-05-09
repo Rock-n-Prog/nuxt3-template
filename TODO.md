@@ -9,6 +9,7 @@ Bugfix
 
 Features
 
+- Add database fake data seeding
 - Add basic pages and components
 - Add more queries
 - Add mutations

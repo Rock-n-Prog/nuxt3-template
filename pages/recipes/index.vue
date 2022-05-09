@@ -4,6 +4,13 @@ import { useRecipePaginationQuery } from '~/generated/operations';
 const { result, loading, error } = useRecipePaginationQuery({ page: 1 });
 
 const recipesData = computed(() => result?.value?.recipePagination);
+
+// TODO: Create recipe form page
+function createRecipe() {
+  console.log('Create recipe!');
+  // TODO: Actually create recipe
+}
+
 // TODO: Weirdly, everything here remains null or undef
 watchEffect(() => {
   console.log(recipesData.value);
@@ -32,6 +39,9 @@ definePageMeta({
           {{ recipe.title }}
         </NuxtLink>
       </div>
+    </div>
+    <div>
+      <button @click="createRecipe">Create recipe</button>
     </div>
     <div>
       <NuxtLink to="/">Go back home</NuxtLink>
