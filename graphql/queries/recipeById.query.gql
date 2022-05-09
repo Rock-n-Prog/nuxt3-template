@@ -1,4 +1,4 @@
-query Recipe($id: MongoID!) {
+query RecipeById($id: MongoID!) {
   recipeById(_id: $id) {
     _id
     title

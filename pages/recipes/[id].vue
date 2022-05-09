@@ -1,9 +1,9 @@
 <script setup lang="ts">
 // TODO: Why do I need to define this?
-import { useRecipeQuery } from '~/generated/operations';
+import { useRecipeByIdQuery } from '~/generated/operations';
 
 const route = useRoute();
-const { result, loading, error } = useRecipeQuery({ _id: route.params.id });
+const { result, loading, error } = useRecipeByIdQuery({ _id: route.params.id });
 
 const recipe = computed(() => result?.value?.recipeById);
 

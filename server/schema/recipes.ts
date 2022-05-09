@@ -2,6 +2,7 @@ import { RecipeTC } from '../models/recipes';
 
 const RecipeQueries = {
   recipeById: RecipeTC.getResolver('findById'),
+  recipePagination: RecipeTC.getResolver('pagination'),
   // TODO: See if we ever need recipe queries
   /*
   recipeByIds: RecipeTC.getResolver('findByIds'),
@@ -9,14 +10,13 @@ const RecipeQueries = {
   recipeMany: RecipeTC.getResolver('findMany'),
   recipeCount: RecipeTC.getResolver('count'),
   recipeConnection: RecipeTC.getResolver('connection'),
-  recipePagination: RecipeTC.getResolver('pagination'),
   */
 };
 
 const RecipeMutations = {
+  recipeCreateOne: RecipeTC.getResolver('createOne'),
   // TODO: See if we ever need recipe mutations
   /*
-  recipeCreateOne: RecipeTC.getResolver('createOne'),
   recipeCreateMany: RecipeTC.getResolver('createMany'),
   recipeUpdateById: RecipeTC.getResolver('updateById'),
   recipeUpdateOne: RecipeTC.getResolver('updateOne'),
