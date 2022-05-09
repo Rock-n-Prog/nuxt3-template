@@ -24,6 +24,17 @@ export type Author = {
   updatedAt?: Maybe<Scalars['Date']>;
 };
 
+/** List of items with pagination. */
+export type AuthorPagination = {
+  __typename?: 'AuthorPagination';
+  /** Total object count. */
+  count?: Maybe<Scalars['Int']>;
+  /** Array of objects. */
+  items?: Maybe<Array<Author>>;
+  /** Information to aid in pagination. */
+  pageInfo: PaginationInfo;
+};
+
 export type CreateOneRecipeInput = {
   author: Scalars['MongoID'];
   createdAt?: InputMaybe<Scalars['Date']>;
@@ -44,6 +55,46 @@ export type CreateOneRecipePayload = {
 export type ErrorInterface = {
   /** Generic error message */
   message?: Maybe<Scalars['String']>;
+};
+
+export type FilterFindManyAuthorCreatedAtOperatorsInput = {
+  exists?: InputMaybe<Scalars['Boolean']>;
+  gt?: InputMaybe<Scalars['Date']>;
+  gte?: InputMaybe<Scalars['Date']>;
+  in?: InputMaybe<Array<InputMaybe<Scalars['Date']>>>;
+  lt?: InputMaybe<Scalars['Date']>;
+  lte?: InputMaybe<Scalars['Date']>;
+  ne?: InputMaybe<Scalars['Date']>;
+  nin?: InputMaybe<Array<InputMaybe<Scalars['Date']>>>;
+};
+
+export type FilterFindManyAuthorInput = {
+  AND?: InputMaybe<Array<FilterFindManyAuthorInput>>;
+  OR?: InputMaybe<Array<FilterFindManyAuthorInput>>;
+  _id?: InputMaybe<Scalars['MongoID']>;
+  /** List of *indexed* fields that can be filtered via operators. */
+  _operators?: InputMaybe<FilterFindManyAuthorOperatorsInput>;
+  createdAt?: InputMaybe<Scalars['Date']>;
+  firstName?: InputMaybe<Scalars['String']>;
+  lastName?: InputMaybe<Scalars['String']>;
+  updatedAt?: InputMaybe<Scalars['Date']>;
+};
+
+/** For performance reason this type contains only *indexed* fields. */
+export type FilterFindManyAuthorOperatorsInput = {
+  _id?: InputMaybe<FilterFindManyAuthor_IdOperatorsInput>;
+  createdAt?: InputMaybe<FilterFindManyAuthorCreatedAtOperatorsInput>;
+};
+
+export type FilterFindManyAuthor_IdOperatorsInput = {
+  exists?: InputMaybe<Scalars['Boolean']>;
+  gt?: InputMaybe<Scalars['MongoID']>;
+  gte?: InputMaybe<Scalars['MongoID']>;
+  in?: InputMaybe<Array<InputMaybe<Scalars['MongoID']>>>;
+  lt?: InputMaybe<Scalars['MongoID']>;
+  lte?: InputMaybe<Scalars['MongoID']>;
+  ne?: InputMaybe<Scalars['MongoID']>;
+  nin?: InputMaybe<Array<InputMaybe<Scalars['MongoID']>>>;
 };
 
 export type FilterFindManyRecipeCreatedAtOperatorsInput = {
@@ -109,12 +160,20 @@ export type PaginationInfo = {
 export type Query = {
   __typename?: 'Query';
   authorById?: Maybe<Author>;
+  authorPagination?: Maybe<AuthorPagination>;
   recipeById?: Maybe<Recipe>;
   recipePagination?: Maybe<RecipePagination>;
 };
 
 export type QueryAuthorByIdArgs = {
   _id: Scalars['MongoID'];
+};
+
+export type QueryAuthorPaginationArgs = {
+  filter?: InputMaybe<FilterFindManyAuthorInput>;
+  page?: InputMaybe<Scalars['Int']>;
+  perPage?: InputMaybe<Scalars['Int']>;
+  sort?: InputMaybe<SortFindManyAuthorInput>;
 };
 
 export type QueryRecipeByIdArgs = {
@@ -147,6 +206,15 @@ export type RecipePagination = {
   /** Information to aid in pagination. */
   pageInfo: PaginationInfo;
 };
+
+export enum SortFindManyAuthorInput {
+  CreatedatAsc = 'CREATEDAT_ASC',
+  CreatedatDesc = 'CREATEDAT_DESC',
+  CreatedatUpdatedatAsc = 'CREATEDAT__UPDATEDAT_ASC',
+  CreatedatUpdatedatDesc = 'CREATEDAT__UPDATEDAT_DESC',
+  IdAsc = '_ID_ASC',
+  IdDesc = '_ID_DESC',
+}
 
 export enum SortFindManyRecipeInput {
   CreatedatAsc = 'CREATEDAT_ASC',

@@ -1,0 +1,7 @@
+query AuthorById($id: MongoID!) {
+  authorById(_id: $id) {
+    _id
+    firstName
+    lastName
+  }
+}

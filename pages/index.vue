@@ -10,5 +10,8 @@ definePageMeta({
     <div>
       <NuxtLink to="/recipes">Go to recipes</NuxtLink>
     </div>
+    <div>
+      <NuxtLink to="/authors">Go to authors</NuxtLink>
+    </div>
   </div>
 </template>

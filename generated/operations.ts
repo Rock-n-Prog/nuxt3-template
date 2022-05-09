@@ -28,6 +28,17 @@ export type Author = {
   updatedAt?: Maybe<Scalars['Date']>;
 };
 
+/** List of items with pagination. */
+export type AuthorPagination = {
+  __typename?: 'AuthorPagination';
+  /** Total object count. */
+  count?: Maybe<Scalars['Int']>;
+  /** Array of objects. */
+  items?: Maybe<Array<Author>>;
+  /** Information to aid in pagination. */
+  pageInfo: PaginationInfo;
+};
+
 export type CreateOneRecipeInput = {
   author: Scalars['MongoID'];
   createdAt?: InputMaybe<Scalars['Date']>;
@@ -48,6 +59,46 @@ export type CreateOneRecipePayload = {
 export type ErrorInterface = {
   /** Generic error message */
   message?: Maybe<Scalars['String']>;
+};
+
+export type FilterFindManyAuthorCreatedAtOperatorsInput = {
+  exists?: InputMaybe<Scalars['Boolean']>;
+  gt?: InputMaybe<Scalars['Date']>;
+  gte?: InputMaybe<Scalars['Date']>;
+  in?: InputMaybe<Array<InputMaybe<Scalars['Date']>>>;
+  lt?: InputMaybe<Scalars['Date']>;
+  lte?: InputMaybe<Scalars['Date']>;
+  ne?: InputMaybe<Scalars['Date']>;
+  nin?: InputMaybe<Array<InputMaybe<Scalars['Date']>>>;
+};
+
+export type FilterFindManyAuthorInput = {
+  AND?: InputMaybe<Array<FilterFindManyAuthorInput>>;
+  OR?: InputMaybe<Array<FilterFindManyAuthorInput>>;
+  _id?: InputMaybe<Scalars['MongoID']>;
+  /** List of *indexed* fields that can be filtered via operators. */
+  _operators?: InputMaybe<FilterFindManyAuthorOperatorsInput>;
+  createdAt?: InputMaybe<Scalars['Date']>;
+  firstName?: InputMaybe<Scalars['String']>;
+  lastName?: InputMaybe<Scalars['String']>;
+  updatedAt?: InputMaybe<Scalars['Date']>;
+};
+
+/** For performance reason this type contains only *indexed* fields. */
+export type FilterFindManyAuthorOperatorsInput = {
+  _id?: InputMaybe<FilterFindManyAuthor_IdOperatorsInput>;
+  createdAt?: InputMaybe<FilterFindManyAuthorCreatedAtOperatorsInput>;
+};
+
+export type FilterFindManyAuthor_IdOperatorsInput = {
+  exists?: InputMaybe<Scalars['Boolean']>;
+  gt?: InputMaybe<Scalars['MongoID']>;
+  gte?: InputMaybe<Scalars['MongoID']>;
+  in?: InputMaybe<Array<InputMaybe<Scalars['MongoID']>>>;
+  lt?: InputMaybe<Scalars['MongoID']>;
+  lte?: InputMaybe<Scalars['MongoID']>;
+  ne?: InputMaybe<Scalars['MongoID']>;
+  nin?: InputMaybe<Array<InputMaybe<Scalars['MongoID']>>>;
 };
 
 export type FilterFindManyRecipeCreatedAtOperatorsInput = {
@@ -113,12 +164,20 @@ export type PaginationInfo = {
 export type Query = {
   __typename?: 'Query';
   authorById?: Maybe<Author>;
+  authorPagination?: Maybe<AuthorPagination>;
   recipeById?: Maybe<Recipe>;
   recipePagination?: Maybe<RecipePagination>;
 };
 
 export type QueryAuthorByIdArgs = {
   _id: Scalars['MongoID'];
+};
+
+export type QueryAuthorPaginationArgs = {
+  filter?: InputMaybe<FilterFindManyAuthorInput>;
+  page?: InputMaybe<Scalars['Int']>;
+  perPage?: InputMaybe<Scalars['Int']>;
+  sort?: InputMaybe<SortFindManyAuthorInput>;
 };
 
 export type QueryRecipeByIdArgs = {
@@ -152,6 +211,15 @@ export type RecipePagination = {
   pageInfo: PaginationInfo;
 };
 
+export enum SortFindManyAuthorInput {
+  CreatedatAsc = 'CREATEDAT_ASC',
+  CreatedatDesc = 'CREATEDAT_DESC',
+  CreatedatUpdatedatAsc = 'CREATEDAT__UPDATEDAT_ASC',
+  CreatedatUpdatedatDesc = 'CREATEDAT__UPDATEDAT_DESC',
+  IdAsc = '_ID_ASC',
+  IdDesc = '_ID_DESC',
+}
+
 export enum SortFindManyRecipeInput {
   CreatedatAsc = 'CREATEDAT_ASC',
   CreatedatDesc = 'CREATEDAT_DESC',
@@ -160,6 +228,28 @@ export enum SortFindManyRecipeInput {
   IdAsc = '_ID_ASC',
   IdDesc = '_ID_DESC',
 }
+
+export type AuthorByIdQueryVariables = Exact<{
+  id: Scalars['MongoID'];
+}>;
+
+export type AuthorByIdQuery = {
+  __typename?: 'Query';
+  authorById?: { __typename?: 'Author'; _id: any; firstName: string; lastName: string } | null;
+};
+
+export type AuthorPaginationQueryVariables = Exact<{
+  page: Scalars['Int'];
+}>;
+
+export type AuthorPaginationQuery = {
+  __typename?: 'Query';
+  authorPagination?: {
+    __typename?: 'AuthorPagination';
+    count?: number | null;
+    items?: Array<{ __typename?: 'Author'; _id: any; firstName: string; lastName: string }> | null;
+  } | null;
+};
 
 export type RecipeByIdQueryVariables = Exact<{
   id: Scalars['MongoID'];
@@ -183,6 +273,202 @@ export type RecipePaginationQuery = {
   } | null;
 };
 
+export const AuthorByIdDocument = {
+  kind: 'Document',
+  definitions: [
+    {
+      kind: 'OperationDefinition',
+      operation: 'query',
+      name: { kind: 'Name', value: 'AuthorById' },
+      variableDefinitions: [
+        {
+          kind: 'VariableDefinition',
+          variable: { kind: 'Variable', name: { kind: 'Name', value: 'id' } },
+          type: { kind: 'NonNullType', type: { kind: 'NamedType', name: { kind: 'Name', value: 'MongoID' } } },
+        },
+      ],
+      selectionSet: {
+        kind: 'SelectionSet',
+        selections: [
+          {
+            kind: 'Field',
+            name: { kind: 'Name', value: 'authorById' },
+            arguments: [
+              {
+                kind: 'Argument',
+                name: { kind: 'Name', value: '_id' },
+                value: { kind: 'Variable', name: { kind: 'Name', value: 'id' } },
+              },
+            ],
+            selectionSet: {
+              kind: 'SelectionSet',
+              selections: [
+                { kind: 'Field', name: { kind: 'Name', value: '_id' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'firstName' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'lastName' } },
+              ],
+            },
+          },
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode;
+
+/**
+ * __useAuthorByIdQuery__
+ *
+ * To run a query within a Vue component, call `useAuthorByIdQuery` and pass it any options that fit your needs.
+ * When your component renders, `useAuthorByIdQuery` returns an object from Apollo Client that contains result, loading and error properties
+ * you can use to render your UI.
+ *
+ * @param variables that will be passed into the query
+ * @param options that will be passed into the query, supported options are listed on: https://v4.apollo.vuejs.org/guide-composable/query.html#options;
+ *
+ * @example
+ * const { result, loading, error } = useAuthorByIdQuery({
+ *   id: // value for 'id'
+ * });
+ */
+export function useAuthorByIdQuery(
+  variables:
+    | AuthorByIdQueryVariables
+    | VueCompositionApi.Ref<AuthorByIdQueryVariables>
+    | ReactiveFunction<AuthorByIdQueryVariables>,
+  options:
+    | VueApolloComposable.UseQueryOptions<AuthorByIdQuery, AuthorByIdQueryVariables>
+    | VueCompositionApi.Ref<VueApolloComposable.UseQueryOptions<AuthorByIdQuery, AuthorByIdQueryVariables>>
+    | ReactiveFunction<VueApolloComposable.UseQueryOptions<AuthorByIdQuery, AuthorByIdQueryVariables>> = {},
+) {
+  return VueApolloComposable.useQuery<AuthorByIdQuery, AuthorByIdQueryVariables>(
+    AuthorByIdDocument,
+    variables,
+    options,
+  );
+}
+export function useAuthorByIdLazyQuery(
+  variables:
+    | AuthorByIdQueryVariables
+    | VueCompositionApi.Ref<AuthorByIdQueryVariables>
+    | ReactiveFunction<AuthorByIdQueryVariables>,
+  options:
+    | VueApolloComposable.UseQueryOptions<AuthorByIdQuery, AuthorByIdQueryVariables>
+    | VueCompositionApi.Ref<VueApolloComposable.UseQueryOptions<AuthorByIdQuery, AuthorByIdQueryVariables>>
+    | ReactiveFunction<VueApolloComposable.UseQueryOptions<AuthorByIdQuery, AuthorByIdQueryVariables>> = {},
+) {
+  return VueApolloComposable.useLazyQuery<AuthorByIdQuery, AuthorByIdQueryVariables>(
+    AuthorByIdDocument,
+    variables,
+    options,
+  );
+}
+export type AuthorByIdQueryCompositionFunctionResult = VueApolloComposable.UseQueryReturn<
+  AuthorByIdQuery,
+  AuthorByIdQueryVariables
+>;
+export const AuthorPaginationDocument = {
+  kind: 'Document',
+  definitions: [
+    {
+      kind: 'OperationDefinition',
+      operation: 'query',
+      name: { kind: 'Name', value: 'AuthorPagination' },
+      variableDefinitions: [
+        {
+          kind: 'VariableDefinition',
+          variable: { kind: 'Variable', name: { kind: 'Name', value: 'page' } },
+          type: { kind: 'NonNullType', type: { kind: 'NamedType', name: { kind: 'Name', value: 'Int' } } },
+        },
+      ],
+      selectionSet: {
+        kind: 'SelectionSet',
+        selections: [
+          {
+            kind: 'Field',
+            name: { kind: 'Name', value: 'authorPagination' },
+            arguments: [
+              {
+                kind: 'Argument',
+                name: { kind: 'Name', value: 'page' },
+                value: { kind: 'Variable', name: { kind: 'Name', value: 'page' } },
+              },
+            ],
+            selectionSet: {
+              kind: 'SelectionSet',
+              selections: [
+                { kind: 'Field', name: { kind: 'Name', value: 'count' } },
+                {
+                  kind: 'Field',
+                  name: { kind: 'Name', value: 'items' },
+                  selectionSet: {
+                    kind: 'SelectionSet',
+                    selections: [
+                      { kind: 'Field', name: { kind: 'Name', value: '_id' } },
+                      { kind: 'Field', name: { kind: 'Name', value: 'firstName' } },
+                      { kind: 'Field', name: { kind: 'Name', value: 'lastName' } },
+                    ],
+                  },
+                },
+              ],
+            },
+          },
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode;
+
+/**
+ * __useAuthorPaginationQuery__
+ *
+ * To run a query within a Vue component, call `useAuthorPaginationQuery` and pass it any options that fit your needs.
+ * When your component renders, `useAuthorPaginationQuery` returns an object from Apollo Client that contains result, loading and error properties
+ * you can use to render your UI.
+ *
+ * @param variables that will be passed into the query
+ * @param options that will be passed into the query, supported options are listed on: https://v4.apollo.vuejs.org/guide-composable/query.html#options;
+ *
+ * @example
+ * const { result, loading, error } = useAuthorPaginationQuery({
+ *   page: // value for 'page'
+ * });
+ */
+export function useAuthorPaginationQuery(
+  variables:
+    | AuthorPaginationQueryVariables
+    | VueCompositionApi.Ref<AuthorPaginationQueryVariables>
+    | ReactiveFunction<AuthorPaginationQueryVariables>,
+  options:
+    | VueApolloComposable.UseQueryOptions<AuthorPaginationQuery, AuthorPaginationQueryVariables>
+    | VueCompositionApi.Ref<VueApolloComposable.UseQueryOptions<AuthorPaginationQuery, AuthorPaginationQueryVariables>>
+    | ReactiveFunction<VueApolloComposable.UseQueryOptions<AuthorPaginationQuery, AuthorPaginationQueryVariables>> = {},
+) {
+  return VueApolloComposable.useQuery<AuthorPaginationQuery, AuthorPaginationQueryVariables>(
+    AuthorPaginationDocument,
+    variables,
+    options,
+  );
+}
+export function useAuthorPaginationLazyQuery(
+  variables:
+    | AuthorPaginationQueryVariables
+    | VueCompositionApi.Ref<AuthorPaginationQueryVariables>
+    | ReactiveFunction<AuthorPaginationQueryVariables>,
+  options:
+    | VueApolloComposable.UseQueryOptions<AuthorPaginationQuery, AuthorPaginationQueryVariables>
+    | VueCompositionApi.Ref<VueApolloComposable.UseQueryOptions<AuthorPaginationQuery, AuthorPaginationQueryVariables>>
+    | ReactiveFunction<VueApolloComposable.UseQueryOptions<AuthorPaginationQuery, AuthorPaginationQueryVariables>> = {},
+) {
+  return VueApolloComposable.useLazyQuery<AuthorPaginationQuery, AuthorPaginationQueryVariables>(
+    AuthorPaginationDocument,
+    variables,
+    options,
+  );
+}
+export type AuthorPaginationQueryCompositionFunctionResult = VueApolloComposable.UseQueryReturn<
+  AuthorPaginationQuery,
+  AuthorPaginationQueryVariables
+>;
 export const RecipeByIdDocument = {
   kind: 'Document',
   definitions: [

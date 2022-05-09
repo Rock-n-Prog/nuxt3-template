@@ -1,0 +1,10 @@
+query AuthorPagination($page: Int!) {
+  authorPagination(page: $page) {
+    count
+    items {
+      _id
+      firstName
+      lastName
+    }
+  }
+}

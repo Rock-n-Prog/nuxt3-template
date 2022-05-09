@@ -2,6 +2,7 @@ import { AuthorTC } from '../models/authors';
 
 const AuthorQueries = {
   authorById: AuthorTC.getResolver('findById'),
+  authorPagination: AuthorTC.getResolver('pagination'),
   // TODO: See if we ever need author queries
   /*
   authorByIds: AuthorTC.getResolver('findByIds'),
@@ -9,7 +10,6 @@ const AuthorQueries = {
   authorMany: AuthorTC.getResolver('findMany'),
   authorCount: AuthorTC.getResolver('count'),
   authorConnection: AuthorTC.getResolver('connection'),
-  authorPagination: AuthorTC.getResolver('pagination'),
   */
 };
 
