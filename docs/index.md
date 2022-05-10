@@ -2,5 +2,6 @@
 
 Yo, this is the docs.
 
+- [Golden rules](golden-rules.md)
 - [References](references.md)
-- [Chosen Technologies](chosen-technologies.md)
+- [Chosen technologies](chosen-technologies.md)
