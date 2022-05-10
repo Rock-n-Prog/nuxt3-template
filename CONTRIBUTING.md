@@ -2,7 +2,7 @@
 
 **Contributions are welcome!**
 
-Don't forget to read the [docs](https://exilednarwal28.github.io/nuxt3-template)!
+Don't forget to read the [docs](https://rock-n-prog.github.io/nuxt3-template)!
 
 ## Code of conduct
 
@@ -10,13 +10,9 @@ Before contributing to the project, please read our [code of conduct](CODE_OF_CO
 
 ## Task tracking
 
-Currently, we use a simple [TODO file](TODO.md) to track what should be implemented next. This is only because I'm working alone for now. Sooner or later, a GitHub project will be created and documented here.
-
-**Mostly everything under "Task tracking" is false for now, because of the simple starting setup.**
+Task tracking uses the [project board](https://github.com/orgs/Rock-n-Prog/projects/1).
 
 ### Functionnalities to implement
-
-The backlog, functionnalities, user stories and use-cases to implement can be found in [this project's wiki](https://github.com/ExiledNarwal28/nuxt3-template/wiki). You will also find documentation and drafts for planned features.
 
 ### Issues
 
@@ -26,9 +22,9 @@ Milestones represent release versions. We use [Semanting Versioning 2.0.0](https
 
 ### Project board
 
-Issues must be placed on the [project board](https://github.com/ExiledNarwal28/space-elevator/projects/1). There are 5 columns in this board : 
+Issues must be placed on the [project board](https://github.com/orgs/Rock-n-Prog/projects/1). There are 5 columns in this board : 
 
-- Maybe : Optionnal issues to improve the codebase but with no direct value to the main features
+- To groom : Issues not yet marked as "To do"
 - To do : Issues that must be done to deliver the current iteration
 - In progress : Self-explanatory
 - Under review : Issues currently in review or waiting to be merged
