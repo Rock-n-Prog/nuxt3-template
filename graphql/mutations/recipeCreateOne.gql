@@ -1,0 +1,11 @@
+mutation RecipeCreateOne($record: CreateOneRecipeInput!) {
+  recipeCreateOne(record: $record) {
+    record {
+      _id
+      title
+    }
+    error {
+      message
+    }
+  }
+}

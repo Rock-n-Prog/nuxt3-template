@@ -10,19 +10,28 @@ Check [TODO.md](TODO.md) for what I want to do next.
 
 ## Setup
 
-Make sure to install the dependencies:
+### Install dependencies
 
 ```bash
 yarn
+```
+
+### Create and run database
+
+Local database needs to be running alongside the app.
+
+```bash
+docker compose up
 ```
 
 ## Available scripts
 
 ### Start development server
 
-Server starts on [http://localhost:3000](http://localhost:3000)
+Frontend starts on [http://localhost:3000](http://localhost:3000)
 
-GraphQL playground is available on [http://localhost:3000/api/playground](http://localhost:3000/api/playground)
+Server starts on [http://localhost:8000](http://localhost:8000), which is an easy-to-use
+[GraphQL Playground](https://github.com/graphql/graphql-playground).
 
 ```bash
 yarn dev

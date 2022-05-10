@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 definePageMeta({
   title: 'Yao, welcome m8',
 });
@@ -8,10 +8,10 @@ definePageMeta({
   <div>
     <h2>Yao, welcome m8</h2>
     <div>
-      <NuxtLink to="/recipes/1">Go to recipe with id '1'</NuxtLink>
+      <NuxtLink to="/recipes">Go to recipes</NuxtLink>
     </div>
     <div>
-      <NuxtLink to="/recipes/2">Go to recipe with id '2'</NuxtLink>
+      <NuxtLink to="/authors">Go to authors</NuxtLink>
     </div>
   </div>
 </template>

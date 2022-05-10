@@ -1,6 +1,8 @@
 {
   "extends": "./.nuxt/tsconfig.json",
   "compilerOptions": {
+    "target": "es2019",
+    "esModuleInterop": true,
     "experimentalDecorators": true
   }
 }

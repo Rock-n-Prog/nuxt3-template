@@ -6,9 +6,11 @@ Bugfix
 
 - (#1) Repair pre-commit hook (this shit:
   `Error [ERR_PACKAGE_PATH_NOT_EXPORTED]: Failed to load plugin 'vue' declared in '.eslintrc.js': Package subpath './lib/rules/array-bracket-spacing' is not defined by "exports" in /home/hackerman/Dev/nuxt3-template/node_modules/eslint/package.json`)
+- Fix prettier scanning (`data/db`) (we might need to move source code to `src`)
 
 Features
 
+- Add database fake data seeding
 - Add basic pages and components
 - Add more queries
 - Add mutations
@@ -23,9 +25,10 @@ Docs
 
 DevEx
 
-- Drop classes in `server`
-  - Make sure server is a function (`makeApolloServer(...)`)
-  - Drop `type-graphql`, use GQL types, inputs and enums (or find something that doesn't use classes)
+- Use Prisma instead of mongoose (maybe also postgresql instead of mongodb?)
+  - [https://www.viget.com/articles/getting-started-with-node-prisma-and-apollo](https://www.viget.com/articles/getting-started-with-node-prisma-and-apollo)
+  - [https://www.prisma.io/apollo](https://www.prisma.io/apollo)
+- Apply code style on yml / yaml files
 - Add jest unit tests
 - Add storybook
 

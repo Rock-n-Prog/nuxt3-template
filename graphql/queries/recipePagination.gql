@@ -1,0 +1,9 @@
+query RecipePagination($page: Int!) {
+  recipePagination(page: $page) {
+    count
+    items {
+      _id
+      title
+    }
+  }
+}

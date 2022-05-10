@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { useRecipeByIdQuery } from '~/generated/operations';
+import { useAuthorByIdQuery } from '~/generated/operations';
 
 const route = useRoute();
-const { result, loading, error } = useRecipeByIdQuery({ id: route.params.id });
+const { result, loading, error } = useAuthorByIdQuery({ id: route.params.id });
 
-const recipeData = computed(() => result?.value?.recipeById);
+const authorData = computed(() => result?.value?.authorById);
 
 /*
 definePageMeta({
@@ -21,12 +21,12 @@ definePageMeta({
     <div v-else-if="error">
       <span>Error: {{ error }}</span>
     </div>
-    <div v-else-if="recipeData">
-      <h2>Recipe with id {{ recipeData._id }}</h2>
+    <div v-else-if="authorData">
+      <h2>Author with id {{ authorData._id }}</h2>
       <div>
-        <strong>Title: </strong>
+        <strong>Name: </strong>
         <span>
-          {{ recipeData.title }}
+          {{ `${authorData.firstName} ${authorData.lastName}` }}
         </span>
       </div>
     </div>

@@ -1,0 +1,14 @@
+mutation AuthorCreateOne($record: CreateOneAuthorInput!) {
+  authorCreateOne(record: $record) {
+    record {
+      _id
+      firstName
+      lastName
+      createdAt
+      updatedAt
+    }
+    error {
+      message
+    }
+  }
+}

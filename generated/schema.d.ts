@@ -10,40 +10,240 @@ export type Scalars = {
   Boolean: boolean;
   Int: number;
   Float: number;
+  Date: any;
+  /** The `ID` scalar type represents a unique MongoDB identifier in collection. MongoDB by default use 12-byte ObjectId value (https://docs.mongodb.com/manual/reference/bson-types/#objectid). But MongoDB also may accepts string or integer as correct values for _id field. */
+  MongoID: any;
 };
 
-export type Car = {
-  __typename?: 'Car';
-  brand: Scalars['String'];
-  id: Scalars['String'];
-  model: Scalars['String'];
-  year: Scalars['Float'];
+export type Author = {
+  __typename?: 'Author';
+  _id: Scalars['MongoID'];
+  createdAt?: Maybe<Scalars['Date']>;
+  firstName: Scalars['String'];
+  lastName: Scalars['String'];
+  updatedAt?: Maybe<Scalars['Date']>;
 };
 
-export type CarInput = {
-  id: Scalars['String'];
+/** List of items with pagination. */
+export type AuthorPagination = {
+  __typename?: 'AuthorPagination';
+  /** Total object count. */
+  count?: Maybe<Scalars['Int']>;
+  /** Array of objects. */
+  items?: Maybe<Array<Author>>;
+  /** Information to aid in pagination. */
+  pageInfo: PaginationInfo;
+};
+
+export type CreateOneAuthorInput = {
+  createdAt?: InputMaybe<Scalars['Date']>;
+  firstName: Scalars['String'];
+  lastName: Scalars['String'];
+  updatedAt?: InputMaybe<Scalars['Date']>;
+};
+
+export type CreateOneAuthorPayload = {
+  __typename?: 'CreateOneAuthorPayload';
+  /** Error that may occur during operation. If you request this field in GraphQL query, you will receive typed error in payload; otherwise error will be provided in root `errors` field of GraphQL response. */
+  error?: Maybe<ErrorInterface>;
+  /** Created document */
+  record?: Maybe<Author>;
+  /** Document ID */
+  recordId?: Maybe<Scalars['MongoID']>;
+};
+
+export type CreateOneRecipeInput = {
+  author: Scalars['MongoID'];
+  createdAt?: InputMaybe<Scalars['Date']>;
+  title: Scalars['String'];
+  updatedAt?: InputMaybe<Scalars['Date']>;
+};
+
+export type CreateOneRecipePayload = {
+  __typename?: 'CreateOneRecipePayload';
+  /** Error that may occur during operation. If you request this field in GraphQL query, you will receive typed error in payload; otherwise error will be provided in root `errors` field of GraphQL response. */
+  error?: Maybe<ErrorInterface>;
+  /** Created document */
+  record?: Maybe<Recipe>;
+  /** Document ID */
+  recordId?: Maybe<Scalars['MongoID']>;
+};
+
+export type ErrorInterface = {
+  /** Generic error message */
+  message?: Maybe<Scalars['String']>;
+};
+
+export type FilterFindManyAuthorCreatedAtOperatorsInput = {
+  exists?: InputMaybe<Scalars['Boolean']>;
+  gt?: InputMaybe<Scalars['Date']>;
+  gte?: InputMaybe<Scalars['Date']>;
+  in?: InputMaybe<Array<InputMaybe<Scalars['Date']>>>;
+  lt?: InputMaybe<Scalars['Date']>;
+  lte?: InputMaybe<Scalars['Date']>;
+  ne?: InputMaybe<Scalars['Date']>;
+  nin?: InputMaybe<Array<InputMaybe<Scalars['Date']>>>;
+};
+
+export type FilterFindManyAuthorInput = {
+  AND?: InputMaybe<Array<FilterFindManyAuthorInput>>;
+  OR?: InputMaybe<Array<FilterFindManyAuthorInput>>;
+  _id?: InputMaybe<Scalars['MongoID']>;
+  /** List of *indexed* fields that can be filtered via operators. */
+  _operators?: InputMaybe<FilterFindManyAuthorOperatorsInput>;
+  createdAt?: InputMaybe<Scalars['Date']>;
+  firstName?: InputMaybe<Scalars['String']>;
+  lastName?: InputMaybe<Scalars['String']>;
+  updatedAt?: InputMaybe<Scalars['Date']>;
+};
+
+/** For performance reason this type contains only *indexed* fields. */
+export type FilterFindManyAuthorOperatorsInput = {
+  _id?: InputMaybe<FilterFindManyAuthor_IdOperatorsInput>;
+  createdAt?: InputMaybe<FilterFindManyAuthorCreatedAtOperatorsInput>;
+};
+
+export type FilterFindManyAuthor_IdOperatorsInput = {
+  exists?: InputMaybe<Scalars['Boolean']>;
+  gt?: InputMaybe<Scalars['MongoID']>;
+  gte?: InputMaybe<Scalars['MongoID']>;
+  in?: InputMaybe<Array<InputMaybe<Scalars['MongoID']>>>;
+  lt?: InputMaybe<Scalars['MongoID']>;
+  lte?: InputMaybe<Scalars['MongoID']>;
+  ne?: InputMaybe<Scalars['MongoID']>;
+  nin?: InputMaybe<Array<InputMaybe<Scalars['MongoID']>>>;
+};
+
+export type FilterFindManyRecipeCreatedAtOperatorsInput = {
+  exists?: InputMaybe<Scalars['Boolean']>;
+  gt?: InputMaybe<Scalars['Date']>;
+  gte?: InputMaybe<Scalars['Date']>;
+  in?: InputMaybe<Array<InputMaybe<Scalars['Date']>>>;
+  lt?: InputMaybe<Scalars['Date']>;
+  lte?: InputMaybe<Scalars['Date']>;
+  ne?: InputMaybe<Scalars['Date']>;
+  nin?: InputMaybe<Array<InputMaybe<Scalars['Date']>>>;
+};
+
+export type FilterFindManyRecipeInput = {
+  AND?: InputMaybe<Array<FilterFindManyRecipeInput>>;
+  OR?: InputMaybe<Array<FilterFindManyRecipeInput>>;
+  _id?: InputMaybe<Scalars['MongoID']>;
+  /** List of *indexed* fields that can be filtered via operators. */
+  _operators?: InputMaybe<FilterFindManyRecipeOperatorsInput>;
+  author?: InputMaybe<Scalars['MongoID']>;
+  createdAt?: InputMaybe<Scalars['Date']>;
+  title?: InputMaybe<Scalars['String']>;
+  updatedAt?: InputMaybe<Scalars['Date']>;
+};
+
+/** For performance reason this type contains only *indexed* fields. */
+export type FilterFindManyRecipeOperatorsInput = {
+  _id?: InputMaybe<FilterFindManyRecipe_IdOperatorsInput>;
+  createdAt?: InputMaybe<FilterFindManyRecipeCreatedAtOperatorsInput>;
+};
+
+export type FilterFindManyRecipe_IdOperatorsInput = {
+  exists?: InputMaybe<Scalars['Boolean']>;
+  gt?: InputMaybe<Scalars['MongoID']>;
+  gte?: InputMaybe<Scalars['MongoID']>;
+  in?: InputMaybe<Array<InputMaybe<Scalars['MongoID']>>>;
+  lt?: InputMaybe<Scalars['MongoID']>;
+  lte?: InputMaybe<Scalars['MongoID']>;
+  ne?: InputMaybe<Scalars['MongoID']>;
+  nin?: InputMaybe<Array<InputMaybe<Scalars['MongoID']>>>;
+};
+
+export type Mutation = {
+  __typename?: 'Mutation';
+  /** Create one document with mongoose defaults, setters, hooks and validation */
+  authorCreateOne?: Maybe<CreateOneAuthorPayload>;
+  /** Create one document with mongoose defaults, setters, hooks and validation */
+  recipeCreateOne?: Maybe<CreateOneRecipePayload>;
+};
+
+export type MutationAuthorCreateOneArgs = {
+  record: CreateOneAuthorInput;
+};
+
+export type MutationRecipeCreateOneArgs = {
+  record: CreateOneRecipeInput;
+};
+
+export type PaginationInfo = {
+  __typename?: 'PaginationInfo';
+  currentPage: Scalars['Int'];
+  hasNextPage?: Maybe<Scalars['Boolean']>;
+  hasPreviousPage?: Maybe<Scalars['Boolean']>;
+  itemCount?: Maybe<Scalars['Int']>;
+  pageCount?: Maybe<Scalars['Int']>;
+  perPage: Scalars['Int'];
 };
 
 export type Query = {
   __typename?: 'Query';
-  car: Car;
-  recipe: Recipe;
+  authorById?: Maybe<Author>;
+  authorPagination?: Maybe<AuthorPagination>;
+  recipeById?: Maybe<Recipe>;
+  recipePagination?: Maybe<RecipePagination>;
 };
 
-export type QueryCarArgs = {
-  carInput: CarInput;
+export type QueryAuthorByIdArgs = {
+  _id: Scalars['MongoID'];
 };
 
-export type QueryRecipeArgs = {
-  recipeInput: RecipeInput;
+export type QueryAuthorPaginationArgs = {
+  filter?: InputMaybe<FilterFindManyAuthorInput>;
+  page?: InputMaybe<Scalars['Int']>;
+  perPage?: InputMaybe<Scalars['Int']>;
+  sort?: InputMaybe<SortFindManyAuthorInput>;
+};
+
+export type QueryRecipeByIdArgs = {
+  _id: Scalars['MongoID'];
+};
+
+export type QueryRecipePaginationArgs = {
+  filter?: InputMaybe<FilterFindManyRecipeInput>;
+  page?: InputMaybe<Scalars['Int']>;
+  perPage?: InputMaybe<Scalars['Int']>;
+  sort?: InputMaybe<SortFindManyRecipeInput>;
 };
 
 export type Recipe = {
   __typename?: 'Recipe';
-  id: Scalars['String'];
+  _id: Scalars['MongoID'];
+  author: Scalars['MongoID'];
+  createdAt?: Maybe<Scalars['Date']>;
   title: Scalars['String'];
+  updatedAt?: Maybe<Scalars['Date']>;
 };
 
-export type RecipeInput = {
-  id: Scalars['String'];
+/** List of items with pagination. */
+export type RecipePagination = {
+  __typename?: 'RecipePagination';
+  /** Total object count. */
+  count?: Maybe<Scalars['Int']>;
+  /** Array of objects. */
+  items?: Maybe<Array<Recipe>>;
+  /** Information to aid in pagination. */
+  pageInfo: PaginationInfo;
 };
+
+export enum SortFindManyAuthorInput {
+  CreatedatAsc = 'CREATEDAT_ASC',
+  CreatedatDesc = 'CREATEDAT_DESC',
+  CreatedatUpdatedatAsc = 'CREATEDAT__UPDATEDAT_ASC',
+  CreatedatUpdatedatDesc = 'CREATEDAT__UPDATEDAT_DESC',
+  IdAsc = '_ID_ASC',
+  IdDesc = '_ID_DESC',
+}
+
+export enum SortFindManyRecipeInput {
+  CreatedatAsc = 'CREATEDAT_ASC',
+  CreatedatDesc = 'CREATEDAT_DESC',
+  CreatedatUpdatedatAsc = 'CREATEDAT__UPDATEDAT_ASC',
+  CreatedatUpdatedatDesc = 'CREATEDAT__UPDATEDAT_DESC',
+  IdAsc = '_ID_ASC',
+  IdDesc = '_ID_DESC',
+}
