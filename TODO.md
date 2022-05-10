@@ -20,7 +20,6 @@ Features
 
 Docs
 
-- Add golden rules
 - Add doc for each common component
 
 DevEx
