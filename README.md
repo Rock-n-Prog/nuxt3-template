@@ -6,7 +6,7 @@ Simple [Nuxt 3](https://v3.nuxtjs.org/) and [Apollo](https://www.apollographql.c
 
 Made with love by [Fabien Roy](https://github.com/ExiledNarwal28).
 
-Check [TODO.md](TODO.md) for what I want to do next.
+Check the [project board](https://github.com/orgs/Rock-n-Prog/projects/1) for what I want to do next.
 
 To contribute, make sure you have read the [docs](https://exilednarwal28.github.io/nuxt3-template) and [contribution guide](CONTRIBUTING.md).
 
