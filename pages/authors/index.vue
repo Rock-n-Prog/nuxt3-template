@@ -18,10 +18,6 @@ async function createAuthor() {
   // TODO: Refetch afterwards
 }
 
-watchEffect(() => {
-  console.log(authorsData?.value?.items);
-});
-
 definePageMeta({
   title: 'Authors',
 });
