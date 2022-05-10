@@ -1,4 +1,4 @@
-# Chosen Technologies
+# Chosen technologies
 
 Here's what I decided to use.
 
