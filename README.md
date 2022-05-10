@@ -10,10 +10,18 @@ Check [TODO.md](TODO.md) for what I want to do next.
 
 ## Setup
 
-Make sure to install the dependencies:
+### Install dependencies
 
 ```bash
 yarn
+```
+
+### Create and run database
+
+Local database needs to be running alongside the app.
+
+```bash
+docker compose up
 ```
 
 ## Available scripts
