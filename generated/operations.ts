@@ -39,6 +39,23 @@ export type AuthorPagination = {
   pageInfo: PaginationInfo;
 };
 
+export type CreateOneAuthorInput = {
+  createdAt?: InputMaybe<Scalars['Date']>;
+  firstName: Scalars['String'];
+  lastName: Scalars['String'];
+  updatedAt?: InputMaybe<Scalars['Date']>;
+};
+
+export type CreateOneAuthorPayload = {
+  __typename?: 'CreateOneAuthorPayload';
+  /** Error that may occur during operation. If you request this field in GraphQL query, you will receive typed error in payload; otherwise error will be provided in root `errors` field of GraphQL response. */
+  error?: Maybe<ErrorInterface>;
+  /** Created document */
+  record?: Maybe<Author>;
+  /** Document ID */
+  recordId?: Maybe<Scalars['MongoID']>;
+};
+
 export type CreateOneRecipeInput = {
   author: Scalars['MongoID'];
   createdAt?: InputMaybe<Scalars['Date']>;
@@ -144,7 +161,13 @@ export type FilterFindManyRecipe_IdOperatorsInput = {
 export type Mutation = {
   __typename?: 'Mutation';
   /** Create one document with mongoose defaults, setters, hooks and validation */
+  authorCreateOne?: Maybe<CreateOneAuthorPayload>;
+  /** Create one document with mongoose defaults, setters, hooks and validation */
   recipeCreateOne?: Maybe<CreateOneRecipePayload>;
+};
+
+export type MutationAuthorCreateOneArgs = {
+  record: CreateOneAuthorInput;
 };
 
 export type MutationRecipeCreateOneArgs = {
@@ -229,6 +252,39 @@ export enum SortFindManyRecipeInput {
   IdDesc = '_ID_DESC',
 }
 
+export type AuthorCreateOneMutationVariables = Exact<{
+  record: CreateOneAuthorInput;
+}>;
+
+export type AuthorCreateOneMutation = {
+  __typename?: 'Mutation';
+  authorCreateOne?: {
+    __typename?: 'CreateOneAuthorPayload';
+    record?: {
+      __typename?: 'Author';
+      _id: any;
+      firstName: string;
+      lastName: string;
+      createdAt?: any | null;
+      updatedAt?: any | null;
+    } | null;
+    error?: never | null;
+  } | null;
+};
+
+export type RecipeCreateOneMutationVariables = Exact<{
+  record: CreateOneRecipeInput;
+}>;
+
+export type RecipeCreateOneMutation = {
+  __typename?: 'Mutation';
+  recipeCreateOne?: {
+    __typename?: 'CreateOneRecipePayload';
+    record?: { __typename?: 'Recipe'; _id: any; title: string } | null;
+    error?: never | null;
+  } | null;
+};
+
 export type AuthorByIdQueryVariables = Exact<{
   id: Scalars['MongoID'];
 }>;
@@ -273,6 +329,197 @@ export type RecipePaginationQuery = {
   } | null;
 };
 
+export const AuthorCreateOneDocument = {
+  kind: 'Document',
+  definitions: [
+    {
+      kind: 'OperationDefinition',
+      operation: 'mutation',
+      name: { kind: 'Name', value: 'AuthorCreateOne' },
+      variableDefinitions: [
+        {
+          kind: 'VariableDefinition',
+          variable: { kind: 'Variable', name: { kind: 'Name', value: 'record' } },
+          type: {
+            kind: 'NonNullType',
+            type: { kind: 'NamedType', name: { kind: 'Name', value: 'CreateOneAuthorInput' } },
+          },
+        },
+      ],
+      selectionSet: {
+        kind: 'SelectionSet',
+        selections: [
+          {
+            kind: 'Field',
+            name: { kind: 'Name', value: 'authorCreateOne' },
+            arguments: [
+              {
+                kind: 'Argument',
+                name: { kind: 'Name', value: 'record' },
+                value: { kind: 'Variable', name: { kind: 'Name', value: 'record' } },
+              },
+            ],
+            selectionSet: {
+              kind: 'SelectionSet',
+              selections: [
+                {
+                  kind: 'Field',
+                  name: { kind: 'Name', value: 'record' },
+                  selectionSet: {
+                    kind: 'SelectionSet',
+                    selections: [
+                      { kind: 'Field', name: { kind: 'Name', value: '_id' } },
+                      { kind: 'Field', name: { kind: 'Name', value: 'firstName' } },
+                      { kind: 'Field', name: { kind: 'Name', value: 'lastName' } },
+                      { kind: 'Field', name: { kind: 'Name', value: 'createdAt' } },
+                      { kind: 'Field', name: { kind: 'Name', value: 'updatedAt' } },
+                    ],
+                  },
+                },
+                {
+                  kind: 'Field',
+                  name: { kind: 'Name', value: 'error' },
+                  selectionSet: {
+                    kind: 'SelectionSet',
+                    selections: [{ kind: 'Field', name: { kind: 'Name', value: 'message' } }],
+                  },
+                },
+              ],
+            },
+          },
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode;
+
+/**
+ * __useAuthorCreateOneMutation__
+ *
+ * To run a mutation, you first call `useAuthorCreateOneMutation` within a Vue component and pass it any options that fit your needs.
+ * When your component renders, `useAuthorCreateOneMutation` returns an object that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - Several other properties: https://v4.apollo.vuejs.org/api/use-mutation.html#return
+ *
+ * @param options that will be passed into the mutation, supported options are listed on: https://v4.apollo.vuejs.org/guide-composable/mutation.html#options;
+ *
+ * @example
+ * const { mutate, loading, error, onDone } = useAuthorCreateOneMutation({
+ *   variables: {
+ *     record: // value for 'record'
+ *   },
+ * });
+ */
+export function useAuthorCreateOneMutation(
+  options:
+    | VueApolloComposable.UseMutationOptions<AuthorCreateOneMutation, AuthorCreateOneMutationVariables>
+    | ReactiveFunction<
+        VueApolloComposable.UseMutationOptions<AuthorCreateOneMutation, AuthorCreateOneMutationVariables>
+      >,
+) {
+  return VueApolloComposable.useMutation<AuthorCreateOneMutation, AuthorCreateOneMutationVariables>(
+    AuthorCreateOneDocument,
+    options,
+  );
+}
+export type AuthorCreateOneMutationCompositionFunctionResult = VueApolloComposable.UseMutationReturn<
+  AuthorCreateOneMutation,
+  AuthorCreateOneMutationVariables
+>;
+export const RecipeCreateOneDocument = {
+  kind: 'Document',
+  definitions: [
+    {
+      kind: 'OperationDefinition',
+      operation: 'mutation',
+      name: { kind: 'Name', value: 'RecipeCreateOne' },
+      variableDefinitions: [
+        {
+          kind: 'VariableDefinition',
+          variable: { kind: 'Variable', name: { kind: 'Name', value: 'record' } },
+          type: {
+            kind: 'NonNullType',
+            type: { kind: 'NamedType', name: { kind: 'Name', value: 'CreateOneRecipeInput' } },
+          },
+        },
+      ],
+      selectionSet: {
+        kind: 'SelectionSet',
+        selections: [
+          {
+            kind: 'Field',
+            name: { kind: 'Name', value: 'recipeCreateOne' },
+            arguments: [
+              {
+                kind: 'Argument',
+                name: { kind: 'Name', value: 'record' },
+                value: { kind: 'Variable', name: { kind: 'Name', value: 'record' } },
+              },
+            ],
+            selectionSet: {
+              kind: 'SelectionSet',
+              selections: [
+                {
+                  kind: 'Field',
+                  name: { kind: 'Name', value: 'record' },
+                  selectionSet: {
+                    kind: 'SelectionSet',
+                    selections: [
+                      { kind: 'Field', name: { kind: 'Name', value: '_id' } },
+                      { kind: 'Field', name: { kind: 'Name', value: 'title' } },
+                    ],
+                  },
+                },
+                {
+                  kind: 'Field',
+                  name: { kind: 'Name', value: 'error' },
+                  selectionSet: {
+                    kind: 'SelectionSet',
+                    selections: [{ kind: 'Field', name: { kind: 'Name', value: 'message' } }],
+                  },
+                },
+              ],
+            },
+          },
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode;
+
+/**
+ * __useRecipeCreateOneMutation__
+ *
+ * To run a mutation, you first call `useRecipeCreateOneMutation` within a Vue component and pass it any options that fit your needs.
+ * When your component renders, `useRecipeCreateOneMutation` returns an object that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - Several other properties: https://v4.apollo.vuejs.org/api/use-mutation.html#return
+ *
+ * @param options that will be passed into the mutation, supported options are listed on: https://v4.apollo.vuejs.org/guide-composable/mutation.html#options;
+ *
+ * @example
+ * const { mutate, loading, error, onDone } = useRecipeCreateOneMutation({
+ *   variables: {
+ *     record: // value for 'record'
+ *   },
+ * });
+ */
+export function useRecipeCreateOneMutation(
+  options:
+    | VueApolloComposable.UseMutationOptions<RecipeCreateOneMutation, RecipeCreateOneMutationVariables>
+    | ReactiveFunction<
+        VueApolloComposable.UseMutationOptions<RecipeCreateOneMutation, RecipeCreateOneMutationVariables>
+      >,
+) {
+  return VueApolloComposable.useMutation<RecipeCreateOneMutation, RecipeCreateOneMutationVariables>(
+    RecipeCreateOneDocument,
+    options,
+  );
+}
+export type RecipeCreateOneMutationCompositionFunctionResult = VueApolloComposable.UseMutationReturn<
+  RecipeCreateOneMutation,
+  RecipeCreateOneMutationVariables
+>;
 export const AuthorByIdDocument = {
   kind: 'Document',
   definitions: [

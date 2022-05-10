@@ -2,7 +2,7 @@
 import { useAuthorByIdQuery } from '~/generated/operations';
 
 const route = useRoute();
-const { result, loading, error } = useAuthorByIdQuery({ _id: route.params.id });
+const { result, loading, error } = useAuthorByIdQuery({ id: route.params.id });
 
 const authorData = computed(() => result?.value?.authorById);
 

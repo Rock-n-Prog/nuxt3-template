@@ -1,22 +1,36 @@
 <script setup lang="ts">
-import { useRecipePaginationQuery } from '~/generated/operations';
+import { useRecipePaginationQuery, useRecipeCreateOneMutation, useAuthorPaginationQuery } from '~/generated/operations';
 
-const { result, loading, error } = useRecipePaginationQuery({ page: 1 });
+const {
+  result: getRecipesResult,
+  loading: getRecipesLoading,
+  error: getRecipesError,
+} = useRecipePaginationQuery({ page: 1 });
+const {
+  result: getAuthorsResult,
+  loading: getAuthorsLoading,
+  error: getAuthorsError,
+} = useAuthorPaginationQuery({ page: 1 });
+const { mutate, loading: createLoading, error: createError } = useRecipeCreateOneMutation({});
 
-const recipesData = computed(() => result?.value?.recipePagination);
+const recipesData = computed(() => getRecipesResult?.value?.recipePagination);
+const authorsData = computed(() => getAuthorsResult?.value?.authorPagination);
 
 // TODO: Create recipe form page
-function createRecipe() {
-  console.log('Create recipe!');
-  // TODO: Actually create recipe
-}
+async function createRecipe() {
+  if (authorsData?.value?.items?.length > 0) {
+    const author = authorsData.value.items[0];
 
-// TODO: Weirdly, everything here remains null or undef
-watchEffect(() => {
-  console.log(recipesData.value);
-  console.log(loading.value);
-  console.log(error.value);
-});
+    await mutate({
+      record: {
+        title: 'Chili',
+        author: author._id,
+      },
+    });
+
+    // TODO: Refetch afterwards
+  }
+}
 
 definePageMeta({
   title: 'Recipes',
@@ -26,22 +40,31 @@ definePageMeta({
 <template>
   <div>
     <h2>Recipes</h2>
-    <div v-if="loading">
+    <div v-if="getRecipesLoading || getRecipesLoading">
       <span>Loading...</span>
     </div>
-    <div v-else-if="error">
-      <span>Error: {{ error }}</span>
+    <div v-else-if="getRecipesError">
+      <span>Recipes error: {{ getRecipesError }}</span>
+    </div>
+    <div v-else-if="getAuthorsError">
+      <span>Authors error: {{ getAuthorsError }}</span>
     </div>
     <div v-else-if="recipesData">
       <h3>We got {{ recipesData.count }} recipes!</h3>
       <div v-for="recipe in recipesData.items">
-        <NuxtLink :to="{ path: 'recipes', params: { id: recipe._id } }">
+        <NuxtLink :to="`/recipes/${recipe._id}`">
           {{ recipe.title }}
         </NuxtLink>
       </div>
-    </div>
-    <div>
-      <button @click="createRecipe">Create recipe</button>
+      <div v-if="authorsData.items.length > 0">
+        <button @click="createRecipe">Create recipe</button>
+        <div v-if="createLoading">
+          <span>Loading...</span>
+        </div>
+        <div v-else-if="createError">
+          <span>Error: {{ createError }}</span>
+        </div>
+      </div>
     </div>
     <div>
       <NuxtLink to="/">Go back home</NuxtLink>

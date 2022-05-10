@@ -2,7 +2,7 @@
 import { useRecipeByIdQuery } from '~/generated/operations';
 
 const route = useRoute();
-const { result, loading, error } = useRecipeByIdQuery({ _id: route.params.id });
+const { result, loading, error } = useRecipeByIdQuery({ id: route.params.id });
 
 const recipeData = computed(() => result?.value?.recipeById);
 

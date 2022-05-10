@@ -14,9 +14,9 @@ const AuthorQueries = {
 };
 
 const AuthorMutations = {
+  authorCreateOne: AuthorTC.getResolver('createOne'),
   // TODO: See if we ever need author mutations
   /*
-  authorCreateOne: AuthorTC.getResolver('createOne'),
   authorCreateMany: AuthorTC.getResolver('createMany'),
   authorUpdateById: AuthorTC.getResolver('updateById'),
   authorUpdateOne: AuthorTC.getResolver('updateOne'),

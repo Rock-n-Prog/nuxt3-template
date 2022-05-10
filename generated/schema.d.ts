@@ -35,6 +35,23 @@ export type AuthorPagination = {
   pageInfo: PaginationInfo;
 };
 
+export type CreateOneAuthorInput = {
+  createdAt?: InputMaybe<Scalars['Date']>;
+  firstName: Scalars['String'];
+  lastName: Scalars['String'];
+  updatedAt?: InputMaybe<Scalars['Date']>;
+};
+
+export type CreateOneAuthorPayload = {
+  __typename?: 'CreateOneAuthorPayload';
+  /** Error that may occur during operation. If you request this field in GraphQL query, you will receive typed error in payload; otherwise error will be provided in root `errors` field of GraphQL response. */
+  error?: Maybe<ErrorInterface>;
+  /** Created document */
+  record?: Maybe<Author>;
+  /** Document ID */
+  recordId?: Maybe<Scalars['MongoID']>;
+};
+
 export type CreateOneRecipeInput = {
   author: Scalars['MongoID'];
   createdAt?: InputMaybe<Scalars['Date']>;
@@ -140,7 +157,13 @@ export type FilterFindManyRecipe_IdOperatorsInput = {
 export type Mutation = {
   __typename?: 'Mutation';
   /** Create one document with mongoose defaults, setters, hooks and validation */
+  authorCreateOne?: Maybe<CreateOneAuthorPayload>;
+  /** Create one document with mongoose defaults, setters, hooks and validation */
   recipeCreateOne?: Maybe<CreateOneRecipePayload>;
+};
+
+export type MutationAuthorCreateOneArgs = {
+  record: CreateOneAuthorInput;
 };
 
 export type MutationRecipeCreateOneArgs = {

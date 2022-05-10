@@ -1,21 +1,25 @@
 <script setup lang="ts">
-import { useAuthorPaginationQuery } from '~/generated/operations';
+import { useAuthorPaginationQuery, useAuthorCreateOneMutation } from '~/generated/operations';
 
-const { result, loading, error } = useAuthorPaginationQuery({ page: 1 });
+const { result, loading: getLoading, error: getError } = useAuthorPaginationQuery({ page: 1 });
+const { mutate, loading: createLoading, error: createError } = useAuthorCreateOneMutation({});
 
 const authorsData = computed(() => result?.value?.authorPagination);
 
 // TODO: Create author form page
-function createAuthor() {
-  console.log('Create author!');
-  // TODO: Actually create author
+async function createAuthor() {
+  await mutate({
+    record: {
+      firstName: 'Fabien',
+      lastName: 'Roy',
+    },
+  });
+
+  // TODO: Refetch afterwards
 }
 
-// TODO: Weirdly, everything here remains null or undef
 watchEffect(() => {
-  console.log(authorsData.value);
-  console.log(loading.value);
-  console.log(error.value);
+  console.log(authorsData?.value?.items);
 });
 
 definePageMeta({
@@ -26,22 +30,28 @@ definePageMeta({
 <template>
   <div>
     <h2>Authors</h2>
-    <div v-if="loading">
+    <div v-if="getLoading">
       <span>Loading...</span>
     </div>
-    <div v-else-if="error">
-      <span>Error: {{ error }}</span>
+    <div v-else-if="getError">
+      <span>Error: {{ getError }}</span>
     </div>
     <div v-else-if="authorsData">
       <h3>We got {{ authorsData.count }} authors!</h3>
       <div v-for="author in authorsData.items">
-        <NuxtLink :to="{ path: 'authors', params: { id: author._id } }">
+        <NuxtLink :to="`/authors/${author._id}`">
           {{ `${author.firstName} ${author.lastName}` }}
         </NuxtLink>
       </div>
     </div>
     <div>
       <button @click="createAuthor">Create author</button>
+      <div v-if="createLoading">
+        <span>Loading...</span>
+      </div>
+      <div v-else-if="createError">
+        <span>Error: {{ createError }}</span>
+      </div>
     </div>
     <div>
       <NuxtLink to="/">Go back home</NuxtLink>
