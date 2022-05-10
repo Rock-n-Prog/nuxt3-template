@@ -1,6 +1,6 @@
 # Nuxt 3 Template
 
-[![Build](https://github.com/ExiledNarwal28/nuxt3-template/actions/workflows/build.yml/badge.svg)](https://github.com/ExiledNarwal28/nuxt3-template/actions/workflows/build.yml)
+[![Build](https://github.com/Rock-n-Prog/nuxt3-template/actions/workflows/build.yml/badge.svg)](https://github.com/Rock-n-Prog/nuxt3-template/actions/workflows/build.yml)
 
 Simple [Nuxt 3](https://v3.nuxtjs.org/) and [Apollo](https://www.apollographql.com/) Template about recipes.
 
