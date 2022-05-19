@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useAuthorPaginationQuery, useAuthorCreateOneMutation } from '~/generated/operations';
+import styled from 'vue3-styled-components';
 
 const { result, loading: getLoading, error: getError } = useAuthorPaginationQuery({ page: 1 });
 const { mutate, loading: createLoading, error: createError } = useAuthorCreateOneMutation({});
