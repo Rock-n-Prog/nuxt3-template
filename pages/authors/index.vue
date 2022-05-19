@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useAuthorPaginationQuery, useAuthorCreateOneMutation } from '~/generated/operations';
+import styled from 'vue3-styled-components';
 
 const { result, loading: getLoading, error: getError } = useAuthorPaginationQuery({ page: 1 });
 const { mutate, loading: createLoading, error: createError } = useAuthorCreateOneMutation({});
@@ -21,6 +22,10 @@ async function createAuthor() {
 definePageMeta({
   title: 'Authors',
 });
+
+const BlueButton = styled.button`
+  background-color: blue;
+`;
 </script>
 
 <template>
@@ -41,7 +46,7 @@ definePageMeta({
       </div>
     </div>
     <div>
-      <button @click="createAuthor">Create author</button>
+      <BlueButton @click="createAuthor">Create author</BlueButton>
       <div v-if="createLoading">
         <span>Loading...</span>
       </div>

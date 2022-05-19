@@ -31,7 +31,8 @@
     "graphql-compose": "^9.0.8",
     "graphql-compose-mongoose": "^9.7.1",
     "mongoose": "^6.3.2",
-    "mongoose-timestamp": "^0.6.0"
+    "mongoose-timestamp": "^0.6.0",
+    "vue3-styled-components": "^1.2.1"
   },
   "devDependencies": {
     "@graphql-codegen/cli": "^2.6.2",
