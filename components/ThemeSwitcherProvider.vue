@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ThemeProvider } from 'vue3-styled-components';
-import { darkTheme, lightTheme } from '~/styles/theme';
+import { darkTheme, lightTheme } from '~/styles/themes';
 import themeKey from '~/keys/theme';
 
 // TODO: Define type for theme (modes = 'dark' | 'light')

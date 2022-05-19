@@ -22,10 +22,6 @@ async function createAuthor() {
 definePageMeta({
   title: 'Authors',
 });
-
-const BlueButton = styled.button`
-  background-color: blue;
-`;
 </script>
 
 <template>
@@ -46,7 +42,7 @@ const BlueButton = styled.button`
       </div>
     </div>
     <div>
-      <BlueButton @click="createAuthor">Create author</BlueButton>
+      <button @click="createAuthor">Create author</button>
       <div v-if="createLoading">
         <span>Loading...</span>
       </div>

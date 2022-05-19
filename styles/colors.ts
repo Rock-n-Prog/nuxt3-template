@@ -1,11 +1,11 @@
-const lightTheme = {
+const lightColors = {
   primary: 'red',
   secondary: 'blue',
 };
 
-const darkTheme = {
+const darkColors = {
   primary: 'darkred',
   secondary: 'darkblue',
 };
 
-export { lightTheme, darkTheme };
+export { lightColors, darkColors };

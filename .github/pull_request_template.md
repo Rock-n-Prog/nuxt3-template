@@ -1,6 +1,7 @@
 ### Before contributing
 
-Please make sure you have read the [contribution guide](https://github.com/ExiledNarwal28/nuxt3-template/blob/docs/main/CONTRIBUTING.md).
+Please make sure you have read the
+[contribution guide](https://github.com/ExiledNarwal28/nuxt3-template/blob/docs/main/CONTRIBUTING.md).
 
 ### Description
 

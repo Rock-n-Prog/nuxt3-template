@@ -8,7 +8,8 @@ Made with love by [Fabien Roy](https://github.com/ExiledNarwal28).
 
 Check the [project board](https://github.com/orgs/Rock-n-Prog/projects/1) for what I want to do next.
 
-To contribute, make sure you have read the [docs](https://exilednarwal28.github.io/nuxt3-template) and [contribution guide](CONTRIBUTING.md).
+To contribute, make sure you have read the [docs](https://exilednarwal28.github.io/nuxt3-template) and
+[contribution guide](CONTRIBUTING.md).
 
 ## Setup
 

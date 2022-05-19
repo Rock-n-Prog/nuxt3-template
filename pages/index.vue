@@ -10,7 +10,7 @@ const { theme, themeMode, switchTheme } = inject(themeKey);
 
 const ExampleBox = computed(function () {
   return styled.div`
-    background-color: ${theme.value.primary};
+    background-color: ${theme.value.colors.primary};
     height: 100px;
     width: 100px;`;
 });
